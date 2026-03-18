@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>绿佳电动车招商峰会邀请函</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft YaHei', sans-serif; background: #000; overflow: hidden; }
+
+        /* 轮播容器 */
+        .slider { position: relative; width: 100%; height: 100vh; overflow: hidden; perspective: 1000px; }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            pointer-events: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        /* 背景动画效果 */
+        .bg-anim {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 30%, #8B0000 60%, #A52A2A 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            z-index: 0;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 第一屏背景 - 奔马主题 */
+        .slide-1 .bg-anim {
+            background-image: url('https://www.coze.cn/s/p_TmWSiLD4A/?width_height=1320x2848');
+            background-size: cover;
+            background-position: center;
+            animation: none;
+        }
+        /* 第二屏背景 - 金马主题 */
+        .slide-2 .bg-anim {
+            background-image: url('https://www.coze.cn/s/epfB4sEmmI4/?width_height=1318x2468');
+            background-size: cover;
+            background-position: center;
+            animation: none;
+        }
+        /* 第三屏背景 - 金马主题 */
+        .slide-3 .bg-anim {
+            background-image: url('https://www.coze.cn/s/epfB4sEmmI4/?width_height=1318x2468');
+            background-size: cover;
+            background-position: center;
+            animation: none;
+        }
+        /* 第四屏背景 - 金马主题 */
+        .slide-4 .bg-anim {
+            background-image: url('https://www.coze.cn/s/epfB4sEmmI4/?width_height=1318x2468');
+            background-size: cover;
+            background-position: center;
+            animation: none;
+        }
+        /* 第五屏背景 - 奔马主题 */
+        .slide-5 .bg-anim {
+            background-image: url('https://www.coze.cn/s/p_TmWSiLD4A/?width_height=1320x2848');
+            background-size: cover;
+            background-position: center;
+            animation: none;
+        }
+
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
+            z-index: 1;
+        }
+
+        /* 闪光粒子 */
+        .sparkle { position: absolute; width: 8px; height: 8px; background: white; border-radius: 50%; animation: sparkle 3s infinite; box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.8); z-index: 2; }
+        @keyframes sparkle { 0%, 100% { opacity: 0; transform: scale(0) translateY(0); } 50% { opacity: 1; transform: scale(2) translateY(-20px); } }
+
+        /* 内容区域 */
+        .content { position: relative; z-index: 10; text-align: center; color: white; width: 100%; max-width: 600px; }
+
+        /* Logo */
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: -20px;
+            width: 180px;
+            height: 72px;
+            background-image: url('https://www.coze.cn/s/e9QvodHF0F0/?width_height=1241x972');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 100;
+            animation: logoGlow 3s ease-in-out infinite;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.5);
+            cursor: pointer;
+        }
+        @keyframes logoGlow {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 40px rgba(255, 215, 0, 0.5); }
+            50% { transform: scale(1.08); box-shadow: 0 15px 50px rgba(255, 215, 0, 0.8); }
+        }
+
+        /* 邀请函大标题 */
+        .invite-title {
+            font-size: 72px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 4px 8px rgba(0,0,0,0.3);
+            margin-bottom: 40px;
+            animation: titleGlow 3s ease-in-out infinite;
+            letter-spacing: 20px;
+        }
+        @keyframes titleGlow {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 4px 8px rgba(0,0,0,0.3); }
+            50% { transform: scale(1.05); text-shadow: 0 0 60px rgba(255, 215, 0, 1), 0 6px 12px rgba(0,0,0,0.4); }
+        }
+        .invite-subtitle {
+            font-size: 18px;
+            color: rgba(255, 215, 0, 0.9);
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* 主标题 */
+        .title { font-size: 42px; font-weight: 900; letter-spacing: 8px; text-shadow: 0 0 30px rgba(255, 215, 0, 0.8); margin-bottom: 20px; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .subtitle { font-size: 20px; font-weight: 500; letter-spacing: 3px; margin-bottom: 40px; }
+
+        /* 信息卡片 */
+        .info-card { background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 30px 25px; margin: 20px 0; color: #222; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); }
+        .info-item { display: flex; align-items: center; margin: 15px 0; padding: 15px; background: linear-gradient(135deg, #FFF8DC, #FFFAF0); border-radius: 12px; border-left: 4px solid #C41E3A; }
+        .info-icon { font-size: 28px; margin-right: 15px; }
+        .info-text { font-size: 16px; font-weight: 700; color: #222; }
+
+        /* 亮点 */
+        .highlights { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 20px 0; }
+        .highlight { background: linear-gradient(135deg, #C41E3A, #8B0000); color: white; padding: 12px 20px; border-radius: 25px; font-size: 14px; font-weight: 700; box-shadow: 0 5px 15px rgba(196, 30, 58, 0.4); }
+
+        /* VIP卡片 */
+        .vip-card { background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.1)); border: 3px solid #FFD700; border-radius: 20px; padding: 25px 20px; margin: 15px 0; box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3); }
+        .vip-header { display: flex; align-items: center; justify-content: center; margin-bottom: 15px; }
+        .vip-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #FFD700, #FFA500); display: flex; align-items: center; justify-content: center; font-size: 36px; margin-right: 15px; border: 4px solid #FFD700; box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5); }
+        .vip-name { font-size: 22px; font-weight: 900; color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+        .vip-title { font-size: 14px; font-weight: 600; color: rgba(255, 255, 255, 0.8); margin-top: 5px; }
+        .vip-intro { font-size: 14px; color: rgba(255, 255, 255, 0.9); line-height: 1.6; text-align: left; }
+
+        /* 地图容器 */
+        .map-container {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+        .map-image {
+            width: 100%;
+            height: 300px;
+            background-image: url('https://www.coze.cn/s/KmNJVm-MBVc/?width_height=1320x1472');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .map-info { margin-top: 20px; text-align: center; }
+        .map-title { font-size: 20px; font-weight: 900; color: #2E7D32; margin-bottom: 15px; }
+        .map-detail { font-size: 14px; color: #666; line-height: 1.8; }
+
+        /* 联系人 */
+        .contact-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: rgba(255, 255, 255, 0.9); border-radius: 12px; margin: 10px 0; border-left: 4px solid #FFD700; }
+        .contact-name { font-size: 16px; font-weight: 700; color: #222; }
+        .contact-region { font-size: 13px; color: #666; margin-top: 3px; }
+        .contact-phone { font-size: 18px; font-weight: 900; color: #C41E3A; }
+
+        /* 按钮 */
+        .cta-button { background: linear-gradient(135deg, #FFD700, #FFA500); color: #8B0000; padding: 18px 50px; border-radius: 50px; font-size: 22px; font-weight: 900; letter-spacing: 4px; text-decoration: none; display: inline-block; margin-top: 30px; box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5); animation: buttonPulse 2s ease-in-out infinite; border: none; cursor: pointer; }
+        @keyframes buttonPulse { 0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5); } 50% { transform: scale(1.08); box-shadow: 0 15px 40px rgba(255, 215, 0, 0.8); } }
+
+        /* 音乐按钮 */
+        .music-btn { position: fixed; top: 20px; right: 20px; width: 50px; height: 50px; background: rgba(255, 215, 0, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; z-index: 1000; box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5); animation: musicSpin 3s linear infinite; }
+        @keyframes musicSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .music-btn.paused { animation-play-state: paused; }
+
+        /* 指示器 */
+        .dots { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 100; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255, 255, 255, 0.3); cursor: pointer; transition: all 0.3s; }
+        .dot.active { background: #FFD700; transform: scale(1.3); box-shadow: 0 0 10px rgba(255, 215, 0, 0.8); }
+
+        /* 进度条 */
+        .progress-bar { position: fixed; bottom: 0; left: 0; height: 4px; background: linear-gradient(90deg, #FFD700, #FFA500); width: 0%; transition: width 0.1s linear; box-shadow: 0 0 10px rgba(255, 215, 0, 0.8); z-index: 1000; }
+
+        /* 响应式调整 */
+        @media (max-width: 480px) {
+            .invite-title { font-size: 48px; letter-spacing: 10px; }
+            .title { font-size: 32px; letter-spacing: 4px; }
+            .vip-avatar { width: 60px; height: 60px; font-size: 28px; }
+            .map-image { height: 200px; }
+            .logo { width: 140px; height: 56px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <!-- 第一屏：封面 -->
+        <div class="slide slide-1" data-duration="6000">
+            <div class="bg-anim"></div>
+            <div class="content">
+                <div class="logo"></div>
+                <div class="invite-title">邀请函</div>
+                <div class="invite-subtitle">INVITATION</div>
+                <div class="info-card">
+                    <div class="info-item">
+                        <div class="info-icon">📅</div>
+                        <div class="info-text">2026年3月29日（周日）下午两点</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-text">长沙延年城际酒店（高铁南站附近）</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">🎯</div>
+                        <div class="info-text">破局共赢 · 绿佳护航</div>
+                    </div>
+                </div>
+                <div style="font-size: 20px; font-weight: 700; color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);">好产品·好价格·好政策·好利润</div>
+            </div>
+        </div>
+
+        <!-- 第二屏：会议亮点 -->
+        <div class="slide slide-2" data-duration="6000">
+            <div class="bg-anim"></div>
+            <div class="bg-overlay"></div>
+            <div class="sparkle" style="top: 15%; left: 12%;"></div>
+            <div class="sparkle" style="top: 35%; right: 18%; animation-delay: 0.7s;"></div>
+            <div class="sparkle" style="top: 75%; left: 22%; animation-delay: 1.4s;"></div>
+            <div class="content">
+                <div class="title">会议亮点</div>
+                <div class="highlights">
+                    <div class="highlight">🎯 行业趋势解读</div>
+                    <div class="highlight">💰 招商政策揭秘</div>
+                    <div class="highlight">🚀 产品优势展示</div>
+                    <div class="highlight">🤝 合作方案说明</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三屏：VIP嘉宾 -->
+        <div class="slide slide-3" data-duration="6000">
+            <div class="bg-anim"></div>
+            <div class="bg-overlay"></div>
+            <div class="sparkle" style="top: 10%; left: 10%;"></div>
+            <div class="sparkle" style="top: 30%; right: 15%; animation-delay: 0.5s;"></div>
+            <div class="sparkle" style="top: 70%; left: 20%; animation-delay: 1.0s;"></div>
+            <div class="sparkle" style="top: 90%; right: 25%; animation-delay: 1.5s;"></div>
+            <div class="content">
+                <div class="title">VIP嘉宾</div>
+                
+                <div class="vip-card">
+                    <div class="vip-header">
+                        <div class="vip-avatar">🏆</div>
+                        <div>
+                            <div class="vip-name">唐国军</div>
+                            <div class="vip-title">中铁中南材料有限公司·董事长</div>
+                        </div>
+                    </div>
+                    <div class="vip-intro">中铁中南材料有限公司核心领导，具有深厚的行业背景与丰富的管理经验。</div>
+                </div>
+
+                <div class="vip-card">
+                    <div class="vip-header">
+                        <div class="vip-avatar">🏆</div>
+                        <div>
+                            <div class="vip-name">陈安军</div>
+                            <div class="vip-title">绿佳集团轮值总裁</div>
+                        </div>
+                    </div>
+                    <div class="vip-intro">绿佳集团核心领导团队成员，全面负责集团战略规划与品牌发展，引领企业迈向新高度。</div>
+                </div>
+
+                <div class="vip-card">
+                    <div class="vip-header">
+                        <div class="vip-avatar">💼</div>
+                        <div>
+                            <div class="vip-name">白利中 / 褚辉</div>
+                            <div class="vip-title">绿佳华南区营销总经理</div>
+                        </div>
+                    </div>
+                    <div class="vip-intro">深耕华南市场多年，拥有丰富的渠道拓展与团队管理经验，致力于打造区域营销标杆。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第四屏：会展地址 -->
+        <div class="slide slide-4" data-duration="6000">
+            <div class="bg-anim"></div>
+            <div class="bg-overlay"></div>
+            <div class="sparkle" style="top: 15%; left: 12%;"></div>
+            <div class="sparkle" style="top: 35%; right: 18%; animation-delay: 0.7s;"></div>
+            <div class="sparkle" style="top: 75%; left: 22%; animation-delay: 1.4s;"></div>
+            <div class="content">
+                <div class="map-container">
+                    <div class="map-image"></div>
+                    <div class="map-info">
+                        <div class="map-title">📍 会展地址</div>
+                        <div class="map-detail">
+                            <div style="font-size: 18px; font-weight: 700; color: #2E7D32; margin-bottom: 10px;">长沙延年城际酒店</div>
+                            <div>🚇 地铁2号线长沙南站</div>
+                            <div>🚗 自驾导航搜索"长沙延年城际酒店"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第五屏：联系方式 -->
+        <div class="slide slide-5" data-duration="6000">
+            <div class="bg-anim"></div>
+            <div class="bg-overlay"></div>
+            <div class="sparkle" style="top: 10%; left: 8%;"></div>
+            <div class="sparkle" style="top: 35%; right: 12%; animation-delay: 0.6s;"></div>
+            <div class="sparkle" style="top: 70%; left: 18%; animation-delay: 1.2s;"></div>
+            <div class="sparkle" style="top: 90%; right: 22%; animation-delay: 1.8s;"></div>
+            <div class="content">
+                <div style="font-size: 32px; font-weight: 900; margin-bottom: 30px;">📞 招商负责人</div>
+                
+                <div class="contact-item">
+                    <div>
+                        <div class="contact-name">肖总</div>
+                        <div class="contact-region">长株潭</div>
+                    </div>
+                    <div class="contact-phone">137 5508 0055</div>
+                </div>
+                
+                <div class="contact-item">
+                    <div>
+                        <div class="contact-name">常镇铧</div>
+                        <div class="contact-region">株洲市</div>
+                    </div>
+                    <div class="contact-phone">193 9772 9993</div>
+                </div>
+                
+                <div class="contact-item">
+                    <div>
+                        <div class="contact-name">张费祥</div>
+                        <div class="contact-region">株洲市</div>
+                    </div>
+                    <div class="contact-phone">138 1229 7410</div>
+                </div>
+                
+                <div class="contact-item">
+                    <div>
+                        <div class="contact-name">刘文杰</div>
+                        <div class="contact-region">湘潭市</div>
+                    </div>
+                    <div class="contact-phone">134 6246 9110</div>
+                </div>
+                
+                <a href="tel:13755080055" class="cta-button">立即报名</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="progress-bar" id="progress"></div>
+    <div class="dots">
+        <div class="dot active" data-slide="0"></div>
+        <div class="dot" data-slide="1"></div>
+        <div class="dot" data-slide="2"></div>
+        <div class="dot" data-slide="3"></div>
+        <div class="dot" data-slide="4"></div>
+    </div>
+
+    <button class="music-btn" id="musicBtn">🎵</button>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const progressBar = document.getElementById('progress');
+        const musicBtn = document.getElementById('musicBtn');
+        let currentSlide = 0;
+        let progressInterval;
+        const durations = Array.from(slides).map(slide => parseInt(slide.dataset.duration));
+        let progress = 0;
+        let isPaused = false;
+        let isMusicPlaying = true;
+
+        // 背景音乐
+        const bgMusic = new Audio('https://cdn.pixabay.com/download/audio/2023/03/09/audio_c8c8a73467.mp3');
+        bgMusic.loop = true;
+        bgMusic.volume = 0.35;
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                musicBtn.classList.add('paused');
+                musicBtn.textContent = '🔇';
+            } else {
+                bgMusic.play().catch(() => {});
+                musicBtn.classList.remove('paused');
+                musicBtn.textContent = '🎵';
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+
+        function goToSlide(index) {
+            if (index === currentSlide) return;
+            
+            // 移除所有active状态
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            // 设置新页面为激活状态
+            slides[index].classList.add('active');
+
+            // 更新指示器
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            currentSlide = index;
+            progress = 0;
+        }
+
+        function updateProgress() {
+            if (!isPaused) {
+                const duration = durations[currentSlide];
+                const increment = 100 / (duration / 50);
+                progress += increment;
+                
+                progressBar.style.width = `${progress}%`;
+
+                if (progress >= 100) {
+                    progress = 0;
+                    nextSlide();
+                }
+            }
+        }
+
+        function startProgress() {
+            progressInterval = setInterval(updateProgress, 50);
+        }
+
+        function 终止Progress() {
+            clearInterval(progressInterval);
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % slides.length;
+            goToSlide(next);
+        }
+
+        function prevSlide() {
+            const prev = (currentSlide - 1 + slides.length) % slides.length;
+            goToSlide(prev);
+        }
+
+        // 音乐按钮点击
+        musicBtn.addEventListener('click', toggleMusic);
+
+        // 点击指示器
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                isPaused = true;
+                goToSlide(index);
+                setTimeout(() => { isPaused = false; }, 2000);
+            });
+        });
+
+        // 触摸滑动
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                isPaused = true;
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+                setTimeout(() => { isPaused = false; }, 2000);
+            }
+        }
+
+        // 键盘控制
+        document.addEventListener('keydown', (e) => {
+            isPaused = true;
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                prevSlide();
+            }
+            setTimeout(() => { isPaused = false; }, 2000);
+        });
+
+        // 鼠标滚轮
+        let isScrolling = false;
+        document.addEventListener('wheel', (e) => {
+            if (!isScrolling) {
+                isScrolling = true;
+                isPaused = true;
+                if (e.deltaY > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+                setTimeout(() => { isScrolling = false; isPaused = false; }, 1000);
+            }
+        }, { passive: true });
+
+        // 尝试自动播放音乐
+        document.addEventListener('click', () => {
+            if (isMusicPlaying && bgMusic.paused) {
+                bgMusic.play().catch(() => {});
+            }
+        }, { once: true });
+
+        // 初始化
+        goToSlide(0);
+        startProgress();
+    </script>
+</body>
+</html>
