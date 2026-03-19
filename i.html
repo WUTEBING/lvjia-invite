@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>绿佳招商峰会邀请函</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif}
+html,body{width:100%;height:100%;overflow:hidden;background:#000}
+.swiper{width:100%;height:100%}
+.page{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;line-height:1.8;padding:20px 30px;background-size:cover;background-position:center}
+
+/* 页面1 封面 */
+.page1{background:linear-gradient(180deg,#d81e06,#ff6b35);text-align:center}
+/* 页面2 邀请函 */
+.page2{background:#fff8dc;color:#333}
+/* 页面3 时间地点 */
+.page3{background:#fff8dc;color:#333}
+/* 页面4 会议亮点 */
+.page4{background:#fff8dc;color:#333}
+/* 页面5 嘉宾 */
+.page5{background:#fff8dc;color:#333}
+/* 页面6 地址电话 */
+.page6{background:#fff8dc;color:#333}
+
+.box{max-width:500px;width:100%;background:#fff;padding:30px;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.1)}
+h1{font-size:32px;color:#800000;margin-bottom:10px;text-align:center}
+h2{font-size:20px;color:#8B0000;margin:15px 0}
+p{margin:5px 0}
+.tip{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:#fff;font-size:14px;animation:tip 1.5s infinite}
+@keyframes tip{0%{opacity:0.5}50%{opacity:1}100%{opacity:0.5}}
+</style>
+</head>
+
+<body>
+<div class="tip">↑ 上滑查看下一页 ↑</div>
+
+<div class="swiper">
+    <!-- 第1页 封面 -->
+    <div class="page page1">
+        <div>
+            <h1 style="color:#fff">绿佳电动车<br>长株潭招商财富峰会</h1>
+            <br>
+            <h2 style="color:#ffd700">诚挚邀请您</h2>
+        </div>
+    </div>
+
+    <!-- 第2页 邀请函 -->
+    <div class="page page2">
+        <div class="box">
+            <h1>邀请函</h1>
+            <p style="text-align:center">INVITATION</p>
+        </div>
+    </div>
+
+    <!-- 第3页 时间地点 -->
+    <div class="page page3">
+        <div class="box">
+            <h2>📅 时间</h2>
+            <p>2026年3月29日（周日）下午两点</p>
+            <br>
+            <h2>📍 地点</h2>
+            <p>长沙延年城际酒店（高铁南站附近）</p>
+        </div>
+    </div>
+
+    <!-- 第4页 会议亮点 -->
+    <div class="page page4">
+        <div class="box">
+            <h2>🎯 会议亮点</h2>
+            <p>• 行业趋势解读</p>
+            <p>• 招商政策揭秘</p>
+            <p>• 产品优势展示</p>
+            <p>• 合作方案说明</p>
+        </div>
+    </div>
+
+    <!-- 第5页 嘉宾 -->
+    <div class="page page5">
+        <div class="box">
+            <h2>🏆 VIP嘉宾</h2>
+            <p>唐国军 — 中铁中南材料董事长</p>
+            <p>陈安军 — 绿佳集团轮值总裁</p>
+            <p>白利中 / 褚辉 — 华南区总经理</p>
+        </div>
+    </div>
+
+    <!-- 第6页 地址+电话 -->
+    <div class="page page6">
+        <div class="box">
+            <h2>📍 地址</h2>
+            <p>长沙延年城际酒店</p>
+            <br>
+            <h2>📞 报名热线</h2>
+            <p>肖总 13755080055</p>
+            <p>常总 19397729993</p>
+        </div>
+    </div>
+</div>
+
+<script>
+let swiper = document.querySelector('.swiper');
+let pages = document.querySelectorAll('.page');
+let current = 0;
+
+function goToPage(n){
+    if(n<0 || n>=pages.length)return;
+    current = n;
+    swiper.style.transform = `translateY(-${current*100}%)`;
+}
+
+let startY = 0;
+document.addEventListener('touchstart',e=>{startY=e.touches[0].clientY});
+document.addEventListener('touchend',e=>{
+    let endY = e.changedTouches[0].clientY;
+    if(endY - startY < -50) goToPage(current+1);
+    if(endY - startY > 50) goToPage(current-1);
+});
+
+swiper.style.transition = 'transform 0.4s ease';
+</script>
+</body>
+</html>
